@@ -37,3 +37,7 @@ for _ in range(5):
     # Exibir o estado atual do Circuit Breaker após cada chamada
     print("Estado do Circuit Breaker:", circuit_breaker.state)
     print()
+
+#Este código Python que utiliza a biblioteca resilient para implementar um Circuit Breaker,
+#que ajuda a lidar com falhas em chamadas a serviços remotos,
+#proporcionando uma estratégia de fallback e controlando o número de falhas permitidas antes de abrir o Circuit Breaker.
