@@ -1,0 +1,27 @@
+from resilient import circuit_breaker
+
+# Função que simula a chamada ao serviço remoto
+    def remote_service_call():
+        # Lógica para chamar o serviço remoto (simulada aqui)
+        print("Chamando serviço remoto")
+        # Simular uma falha para teste
+        raise Exception("Erro na chamada do serviço remoto")
+
+# Função de fallback a ser chamada em caso de falha
+    def fallback():
+        print("Fallback acionado. Lógica de fallback aqui.")
+        return "Resposta de fallback"
+
+# Configurar o Circuit Breaker
+    circuit_breaker = circuit_breaker(remote_service_call, fallback_function=fallback, frailure_threshold=3, recovery_timeout=10)
+
+# Realizar chamadas usando o Circuit Breaker
+    for _ in range(5):
+        try:
+            result = circuit_breaker.call()
+            print("Resultado da chamada:", result)
+        except Exception as e:
+            print("Exceção capturada:", e)
+        print("Estado do Circuit Breaker:", circuit_breaker.state)
+        print()
+
